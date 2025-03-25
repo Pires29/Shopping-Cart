@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "name": "Basic T-shirt",
+    "price": 29.99,
+    "description": "Basic cotton t-shirt, comfortable and ideal for everyday wear.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 2,
+    "name": "Sports Sneakers",
+    "price": 159.99,
+    "description": "Comfortable and durable sports sneakers, perfect for physical activities.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 3,
+    "name": "Canvas Backpack",
+    "price": 89.9,
+    "description": "Durable canvas backpack with multiple compartments, perfect for daily use.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 4,
+    "name": "Wristwatch",
+    "price": 249.99,
+    "description": "Elegant wristwatch with stainless steel strap and modern design.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 5,
+    "name": "Sunglasses",
+    "price": 129.99,
+    "description": "Aviator-style sunglasses with UV protection and classic design.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 6,
+    "name": "Leather Jacket",
+    "price": 399.99,
+    "description": "Genuine leather jacket, ideal for adding sophistication to your look.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 7,
+    "name": "Casual Sneakers",
+    "price": 89.9,
+    "description": "Casual fabric sneakers, comfortable and versatile for everyday use.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 8,
+    "name": "Wool Sweater",
+    "price": 69.99,
+    "description": "Soft and warm wool sweater, perfect for colder days.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 9,
+    "name": "Handbag",
+    "price": 139.9,
+    "description": "Elegant handbag, ideal for special occasions or work.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 10,
+    "name": "Winter Jacket",
+    "price": 189.99,
+    "description": "Warm and comfortable winter jacket, perfect for cold weather.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 11,
+    "name": "Leather Belt",
+    "price": 49.9,
+    "description": "Genuine leather belt, durable and with a sophisticated design.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 12,
+    "name": "Leather Skirt",
+    "price": 119.99,
+    "description": "Elegant leather skirt, perfect for work or formal events.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 13,
+    "name": "Wool Coat",
+    "price": 159.99,
+    "description": "Warm and elegant wool coat, ideal for winter.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 14,
+    "name": "Polo Shirt",
+    "price": 34.9,
+    "description": "Comfortable and casual polo shirt, great for a relaxed look.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 15,
+    "name": "High Boots",
+    "price": 199.99,
+    "description": "High leather boots, ideal for cold days and stylish outfits.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 16,
+    "name": "Sun Hat",
+    "price": 49.9,
+    "description": "Elegant sun hat, perfect for sunny days.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 17,
+    "name": "Casual Sneakers",
+    "price": 99.9,
+    "description": "Casual sneakers, comfortable and versatile for everyday wear.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 18,
+    "name": "Cotton Sweater",
+    "price": 39.9,
+    "description": "Soft and light cotton sweater, perfect for warmer days.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 19,
+    "name": "Shoulder Bag",
+    "price": 99.99,
+    "description": "Practical and spacious shoulder bag, ideal for everyday use.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  },
+  {
+    "id": 20,
+    "name": "Waterproof Jacket",
+    "price": 149.99,
+    "description": "Waterproof jacket, perfect for rainy days while staying stylish.",
+    "image": "../assets/images/image.png",
+    "quantity": 0
+  }
+]
