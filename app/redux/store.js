@@ -1,37 +1,33 @@
 import { configureStore } from "@reduxjs/toolkit";
-import productReducer from './features/productsSlice';
-import cartReducer from './features/carrinhoSlice';
-import userReducer from './features/userSlice';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { combineReducers } from "redux";
+import carrinhoReducer from "./features/carrinhoSlice";
+import productReducer from "./features/productsSlice";
+import userReducer from "./features/userSlice";
 
-// Configuração do redux-persist
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage,
-  whitelist: ['products', 'cart'], // Especifica quais reducers serão persistidos
 };
 
-// Envolvendo os reducers com persistReducer
-const persistedProductReducer = persistReducer(persistConfig, productReducer);
-const persistedCartReducer = persistReducer(persistConfig, cartReducer);
+const rootReducer = combineReducers({
+  cart: carrinhoReducer,
+  products: productReducer,
+  user: userReducer,
+});
 
-export const createStore = () => {
-  const store = configureStore({
-    reducer: {
-      products: persistedProductReducer,
-      cart: persistedCartReducer,
-      user: userReducer,
-    },
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        serializableCheck: false,
-      }),
-  });
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-  const persistor = persistStore(store);
-  return { store, persistor };
-};
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ["persist/PERSIST", "persist/REGISTER"], // Ignora as ações do redux-persist
+        ignoredPaths: ["register"], // Ignora o campo `register`
+      },
+    }),
+});
 
-// Criar a store e o persistor para uso global
-export const { store, persistor } = createStore();
+export const persistor = persistStore(store);

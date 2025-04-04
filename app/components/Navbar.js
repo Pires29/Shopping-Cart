@@ -4,12 +4,12 @@ import { FaShoppingCart, FaUserCircle } from 'react-icons/fa'; // Importando o √
 
 export default function Navbar() {
   return (
-    <nav className="bg-blue-500 p-4">
+    <nav className="fixed top-0 bg-blue-500 p-4 w-full">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="text-white text-xl font-semibold">
           Minha Loja
         </Link>
-        <ul className="flex space-x-4">
+{/*         <ul className="flex space-x-4">
           <li>
             <Link href="/" className="text-white hover:text-gray-300">
               Home
@@ -30,7 +30,7 @@ export default function Navbar() {
               Contato
             </Link>
           </li>
-        </ul>
+        </ul> */}
         {/* √çcone do carrinho */}
         <div className="flex items-center space-x-4">
           <Link href="/carrinho" className="text-white hover:text-gray-300">

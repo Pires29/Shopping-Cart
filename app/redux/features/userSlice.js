@@ -3,7 +3,8 @@ import { useEffect } from "react";
 const { createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
- user: null,
+  user: null,
+  displayName: ""
 };
 
 const userSlice = createSlice({
@@ -11,16 +12,19 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser(state, action) {
-      state.user = action.payload
-      console.log("OLHELE", state.user)
+      state.user = action.payload;
+      console.log("OLHELE", state.user);
     },
-    clearUser (state) {
-      state.user = null
-      console.log("Clear user", state.user)
-    }
-
+    setDisplayName(state, action) {
+      state.displayName = action.payload;
+      console.log("DISPLAY_NAME", state.user);
+    },
+    clearUser(state) {
+      state = initialState;
+      console.log("Clear user", state.user);
+    },
   },
 });
 
-export const { setUser, clearUser } = userSlice.actions;
+export const { setUser, clearUser, setDisplayName } = userSlice.actions;
 export default userSlice.reducer;

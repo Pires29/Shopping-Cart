@@ -21,6 +21,7 @@ import {
           <SelectValue placeholder="Categorias" />
         </SelectTrigger>
         <SelectContent>
+          <SelectItem value="all">All</SelectItem>
           <SelectItem value="men's clothing">Men Clothes</SelectItem>
           <SelectItem value="jewelery">Jewelery</SelectItem>
           <SelectItem value="eletronics">Eletronics</SelectItem>

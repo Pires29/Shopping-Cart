@@ -27,7 +27,7 @@ const initialState = {
   filters: {
     category: '',
     order: '',
-    rating: ''
+    rating: 'rating'
   }
 };
 const productSlice = createSlice({
@@ -44,11 +44,13 @@ const productSlice = createSlice({
       console.log("Category:", state.filters.category)
     },
     setOrder (state,action) {
+      state.filters.rating = '' 
       state.filters.order = action.payload
 
       console.log("Order", state.filters.order)
     },
     setRating(state, action) {
+      state.filters.order = '' 
       state.filters.rating = action.payload
 
       console.log("Rating", state.filters.rating)

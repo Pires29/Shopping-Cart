@@ -13,25 +13,26 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import CustomSelect from "./Select";
 import CategorySelect from "./CategorySelect";
+import { MdAddShoppingCart } from "react-icons/md";
 
 export default function ListaProdutos() {
   const [user] = useAuthState(auth);
   const router = useRouter();
   const dispatch = useDispatch();
 
-/*   const loading = useSelector((state) => state.products.loading);
+  /*   const loading = useSelector((state) => state.products.loading);
   const error = useSelector((state) => state.products.error); */
 
   const produtos = useSelector((state) => state.products.products);
+  console.log("Produtos agora", produtos)
   const category = useSelector((state) => state.products.filters.category);
-  const order = useSelector((state) => state.products.filters.order);
+  let order = useSelector((state) => state.products.filters.order);
   const rating = useSelector((state) => state.products.filters.rating);
 
   useEffect(() => {
-      // Se a lista de produtos estiver vazia
-      dispatch(fetchProducts()); // Faz o fetch apenas se não houver produtos no estado
-      console.log("Fez o fetch");
-
+    // Se a lista de produtos estiver vazia
+    dispatch(fetchProducts()); // Faz o fetch apenas se não houver produtos no estado
+    console.log("Fez o fetch");
   }, []);
 
   const handleAddToCart = (produto) => {
@@ -56,9 +57,9 @@ export default function ListaProdutos() {
     console.log("event.target.value", event.target.value);
   }; */
 
-  let produtosFiltrados = category
-    ? produtos.filter((produto) => produto.category === category)
-    : produtos;
+  let produtosFiltrados = category && category !== "all"
+  ? produtos.filter((produto) => produto.category === category)
+  : produtos;
 
   console.log("Mens clothing", produtosFiltrados);
 
@@ -69,22 +70,22 @@ export default function ListaProdutos() {
 
   if (order) {
     produtosFiltrados = [...produtosFiltrados].sort((a, b) => {
-      return order === "asc" ? a.price - b.price : b.price - a.price;
+      return order === "asc" ? b.price - a.price : a.price - b.price;
     });
   }
 
-  if (rating) {
-    console.log("Chamou");
+  if (rating != '') {
+    console.log("RATING");
     produtosFiltrados = [...produtosFiltrados].sort((a, b) => {
       return b.rating.rate - a.rating.rate;
     });
   }
 
-/* if (loading && !error) {
+  /* if (loading && !error) {
     console.log("Loading state:", loading);
     return <p>Loading...</p>;
   } */
-/* 
+  /* 
   if (!loading) {
     console.log("Loading over:", loading);
   }
@@ -122,54 +123,49 @@ export default function ListaProdutos() {
 
   console.log("Data", data) */
 
+  useEffect(() => {
+    console.log("PRODUTOS_FILTRADOS", produtosFiltrados)
+  }, [produtosFiltrados])
+
   return (
-    <div className="flex flex-wrap gap-4">
-      <h1>Ocorreu</h1>
-      <CategorySelect />
-      {/*       <select onChange={handleSelectChange} name="categories" id="categories">
-        <option value="men's clothing">Men Clothes</option>
-        <option value="jewelery">Jewelery</option>
-        <option value="electronics">Eletronics</option>
-        <option value="women's clothing">Women Clothes</option>
-      </select> */}
-      <CustomSelect />
-      {/*       <select onChange={handleOrderChange} name="order" id="order">
-        <option value="desc">Descending</option>
-        <option value="asc">Ascending</option>
-      </select> */}
-      {
-        produtosFiltrados.map((produto) => (
-          <div
-            className="w-1/4 border border-amber-400 p-5 mb-3 text-center"
-            key={produto.id}
-          >
-            {/* Usando o componente Image para exibir a imagem do produto */}
-            <img
-              src={produto.image}
-              alt={produto.name}
-              width={300}
-              height={300}
-              className="object-cover"
-              onClick={() => handleCardClick(produto.id)}
-            />
-            <div className="flex flex-co">
+    <div className="flex justify-center h-screen pt-[92px]">
+      <div className="max-w-5xl mx-auto">
+        {/* Selects */}
+        <div className="flex gap-4 mb-4">
+          <CategorySelect />
+          <CustomSelect />
+        </div>
+
+        {/* Lista de produtos */}
+        <div className="grid grid-cols-3 gap-4">
+          {produtosFiltrados.map((produto) => (
+            <div
+              className="flex flex-col gap-2.5 justify-between border border-amber-400 p-5 text-cente"
+              key={produto.id}
+            >
+              <img
+                src={produto.image}
+                alt={produto.name}
+                width={300}
+                height={300}
+                className="m-auto w-40 h-40 object-contain"
+                onClick={() => handleCardClick(produto.id)}
+              />
               <div>
                 <p>{produto.title}</p>
-                <p>{produto.description}</p>
-                <button
-                  className="border border-amber-500"
-                  onClick={() => handleAddToCart(produto)}
-                >
-                  Adicionar ao Carrinho
-                </button>
+                {/* <p>{produto.description}</p> */}
               </div>
-              <div>
-                <p>${produto.price}</p>
-                <p>{produto.rating.rate}</p>
+              <div className="flex flex-col mt-4">
+                <div className="flex justify-between">
+                  <p>${produto.price}</p>
+                  {/*                   <p>{produto.rating.rate}</p> */}
+                  <MdAddShoppingCart onClick={() => handleAddToCart(produto)} size={30} />
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

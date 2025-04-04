@@ -3,7 +3,7 @@ import { useEffect } from "react";
 const { createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
-  cart: {},
+  cart: [],
 };
 
 const carrinhoSlice = createSlice({
@@ -52,22 +52,23 @@ const carrinhoSlice = createSlice({
       }
     },
     setQuantity(state, action) {
-        /* 
-          1 - Saber a quantidade que tens no produto
-          2 - Alterar a quantidade que tens no produto
-          3 - Fazer com que quantidade mude no carrinho
-        */
-
-          const { id, quantity} = action.payload
-          const itemExist = state.cart.find(
-            (item) => item.id === action.payload.id
-          );
-
-          if(itemExist){
-            itemExist.quantity = quantity
-            console.log("Quantidade", quantity)
-          }
-          
+      const { userID, id, quantity } = action.payload;
+    
+      // Verifica se o carrinho do usuário existe
+      if (!state.cart[userID]) {
+        console.error("Usuário não tem carrinho!");
+        return;
+      }
+    
+      // Encontra o item no carrinho do usuário
+      const itemExist = state.cart[userID].find((item) => item.id === id);
+    
+      if (itemExist) {
+        itemExist.quantity = quantity;
+        console.log("Nova Quantidade:", quantity);
+      } else {
+        console.log("Item não encontrado no carrinho!");
+      }
     },
     clearCart (state){
       state.cart = {}

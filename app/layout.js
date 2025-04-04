@@ -5,6 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Provider } from "react-redux";
 import { store, persistor } from "./redux/store";
+import Navbar from "./components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,7 +25,8 @@ export default function RootLayout({ children }) {
       >
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            {children}
+            <Navbar />
+            <main className="flex-grow">{children}</main>
           </PersistGate>
         </Provider>
       </body>
